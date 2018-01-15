@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+//        var $ = 10; //如果在这定义了 $ = 10 ; 那下面的$()是不起作用的
+
+//        $(function () {
+//
+//        });
+
+
+
+        //   noConflict()  :防止冲突
+
+        var zhaoq = $.noConflict();
+
+        var $ = 10;
+
+        zhaoq(function () {
+
+            zhaoq("body").css('background','red');
+        })
+
+
+
+
+
+        // $.makeArray()    将一个类似数组的对象转换为真正的数组对象
+        // $.parseJSON()	把字符串解析成json对象
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
