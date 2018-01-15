@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #baiyechuang{
+            width: 578px;
+            height: 360px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #left{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            top: 150px;
+            left: 10px;
+            background:url(img/icons.png) no-repeat 0 0;
+            cursor: pointer;
+        }
+        #right{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            top: 150px;
+            right: 10px;
+            background:url(img/icons.png) no-repeat 0 -45px;
+            cursor: pointer;
+        }
+        .dian{
+            list-style: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -100px;
+        }
+        li{
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+            background:url(img/icons.png) no-repeat;
+            background-position: -23px -125px;
+            cursor: pointer;
+        }
+        .cur{
+            background-position: -8px -125px;
+        }
+        .maonimen{
+            -webkit-perspective:400px;
+        }
+        .maonimen p{
+            position: absolute;
+            width: 144px;
+            height: 120px;
+            background-image:url(img/1.jpg);
+            font-size: 40px;
+            text-align: center;
+            line-height: 120px;
+        }
+        .maonimen.fei p{
+            opacity: 0;
+        }
+        #baiyechuang .maonimen.fei p:nth-child(1){-webkit-transform:rotateX(30deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(2){-webkit-transform:rotateX(330deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(3){-webkit-transform:rotateX(3450deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(4){-webkit-transform:rotateX(-30deg) rotateY(-10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(5){-webkit-transform:rotateX(330deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(6){-webkit-transform:rotateX(40deg) rotateY(20deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(7){-webkit-transform:rotateX(340deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(8){-webkit-transform:rotateX(3450deg) rotateY(60deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(9){-webkit-transform:rotateX(230deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(10){-webkit-transform:rotateX(20deg) rotateY(20deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(11){-webkit-transform:rotateX(30deg) rotateY(10deg) translateZ(400px);}
+        #baiyechuang .maonimen.fei p:nth-child(12){-webkit-transform:rotateX(10deg) rotateY(10deg) translateZ(400px);}
+    </style>
+
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(document).ready(
+                function() {
+                    var nowimg = 0;
+
+                    $(".maonimen p").each(
+                            function(){
+                                var a = $(this).index() % 4 * 144;
+                                var b = parseInt($(this).index() / 4) * 120;
+                                $(this).css(
+                                        {
+                                            "left":a,
+                                            "top": b,
+                                            "background-position":(-a) + "px " + (-b) + "px"
+                                        }
+                                );
+                            }
+                    );
+
+                    $(".dian li").mouseover(function () {
+                        $(this).addClass("cur").siblings().removeClass();
+                        nowimg = $(this).index();
+                    });
+
+
+                    $("#right").click(
+                            function(){
+                                nowimg ++;
+                                if(nowimg == 9){
+
+                                    nowimg = 0;
+                                }
+                                dong();
+                                $(".dian li").eq(nowimg).addClass("cur").siblings().removeClass();
+                            }
+                    );
+                    $("#left").click(
+                            function(){
+                                nowimg --;
+                                if(nowimg == -1){
+
+                                    nowimg = 8;
+                                }
+                                dong();
+                                $(".dian li").eq(nowimg).addClass("cur").siblings().removeClass();
+                            }
+                    );
+                    function dong(){
+                        //加过渡：
+                        $(".maonimen p").css("transition","all 1s ease 0s");
+                        $(".maonimen").addClass("fei");
+
+                        $(".zhentu img").attr("src","img/" + nowimg + ".jpg");
+
+                        setTimeout(function(){
+                            //去掉过渡
+                            $(".maonimen p").css("transition","none");
+                            $(".maonimen p").css("background-image","url(img/" + nowimg + ".jpg)");
+                            //我们准备下一张图
+                            $(".maonimen").removeClass("fei");
+                        },1000);
+                    }
+                }
+        );
+    </script>
+</head>
+<body style="height: 1000px">
+<div id="baiyechuang">
+    <div>
+        <div class="maonimen">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="zhentu">
+            <img src="img/1.jpg"/>
+        </div>
+    </div>
+    <div>
+        <span id="left"></span>
+        <span id="right"></span>
+    </div>
+    <ul class="dian">
+        <li class="cur"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

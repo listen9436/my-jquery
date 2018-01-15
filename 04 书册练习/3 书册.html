@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #2c323b;
+            color: #fff;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        ul {
+            width: 200px;
+            background-color: #00B0E7;
+            border: 1px solid #2c323b;
+            text-align: center;
+            display: none;
+        }
+
+        span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url("images/pro_left.png");
+            float: right;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .change{
+            background-image: url("images/pro_down.png");
+        }
+    </style>
+
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+
+            $("p").click(function () {
+
+                //  var a = $(this).find("span");
+//                if (a.css("backgroundImage").indexOf("pro_left.png")>=0) {
+//                    a.css("backgroundImage", "url('images/pro_down.png')");
+//                } else {
+//                    a.css("backgroundImage", "url('images/pro_left.png')");
+//                }
+
+
+                $(this).next("ul").slideToggle("fast");
+                $(this).parent().siblings().find("ul").slideUp("fast");
+
+                $(this).find("span").toggleClass("change");
+                $(this).parent().siblings().find("span").removeClass("change");
+
+            });
+        })
+
+    </script>
+</head>
+<body>
+<div>
+    <div>
+        <p><span></span>哲学</p>
+        <ul>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+        </ul>
+    </div>
+    <div>
+        <p><span></span>经济学</p>
+        <ul>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+        </ul>
+    </div>
+    <div>
+        <p><span></span>法学</p>
+        <ul>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+        </ul>
+    </div>
+    <div>
+        <p><span></span>教育学</p>
+        <ul>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+        </ul>
+    </div>
+    <div>
+        <p><span></span>工学</p>
+        <ul>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+            <li>1232132131</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

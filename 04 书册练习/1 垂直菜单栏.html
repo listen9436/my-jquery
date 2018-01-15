@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            list-style: none;
+        }
+        .main{
+            width: 100px;
+            background-color: #2c323b;
+            color: #fff;
+            text-align: center;
+        }
+        .main p{
+            height: 40px;
+            line-height: 40px;
+        }
+        .main ul{
+            width: 100px;
+            height: 60px;
+            line-height: 30px;
+            background-color: #00B0E7;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+
+
+            $(".main>p").click(function () {
+
+                //当前显示，其他隐藏
+//                $(".main").find("ul").css("display","none");
+//                $(this).next("ul").css("display","block");
+
+
+                //相互不关联(点下显示，再点隐藏)
+
+//                if($(this).next("ul").css("display")=="none"){
+//                    $(this).next("ul").css("display","block");
+//                }else {
+//                    $(this).next("ul").css("display","none");
+//                }
+
+                $(this).next("ul").stop().toggle("fast");  //上述代码一句话搞定
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<ul>
+    <li class="main">
+        <p>菜单一</p>
+        <ul>
+            <li>子菜单1</li>
+            <li>子菜单2</li>
+        </ul>
+    </li>
+    <li class="main">
+        <p>菜单二</p>
+        <ul>
+            <li>子菜单1</li>
+            <li>子菜单2</li>
+        </ul>
+    </li>
+    <li class="main">
+        <p>菜单三</p>
+        <ul>
+            <li>子菜单1</li>
+            <li>子菜单2</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

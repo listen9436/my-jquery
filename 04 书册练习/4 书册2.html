@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            margin: 100px auto;
+
+        }
+
+        .box div {
+            border: 1px solid #666;
+        }
+
+        p {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #666;
+        }
+        p:hover{
+            color: #277fc2;
+        }
+        ul {
+            list-style: none;
+            width: 300px;
+            line-height: 40px;
+            text-align: center;
+            display: none;
+        }
+        li:hover{
+            background-color: #277fc2;
+            cursor: pointer;
+        }
+        .active{
+            color: #277fc2;
+        }
+        span{
+            float: right;
+            margin-right: 10px;
+            transform: rotate(0deg);
+            transition: transform 0.6s ease 0s;
+        }
+        .xx{
+            transform: rotate(90deg);
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+            $("p").click(function () {
+                //当前显示
+                $(this).next("ul").slideToggle("fast");
+                $(this).parent().siblings().find("ul").slideUp("fast");
+                //加样式
+                $(this).toggleClass("active");
+                $(this).parent().siblings().find("p").removeClass();
+                //小三角
+                $(this).find("span").toggleClass("xx");
+                $(this).parent().siblings().find("span").removeClass();
+            });
+        })
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <div>
+        <p>新闻中心<span>></span></p>
+        <ul>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>新闻管理</li>
+        </ul>
+    </div>
+    <div>
+        <p>关于我们<span>></span></p>
+        <ul>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>新闻管理</li>
+        </ul>
+    </div>
+    <div>
+        <p>业务系统<span>></span></p>
+        <ul>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>添加新闻</li>
+            <li>新闻管理</li>
+        </ul>
+    </div>
+    <div>
+        <p>招商加盟<span>></span></p>
+        <ul>
+            <li>联系电话</li>
+            <li>联系电话</li>
+            <li>联系电话</li>
+            <li>联系电话</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
