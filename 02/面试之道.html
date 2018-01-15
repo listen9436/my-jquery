@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #A93520;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB";
+        }
+        .header{
+            width: 1280px;
+            height:300px;
+            margin: 0 auto;
+        }
+        .dt{
+            position: absolute;
+            left: 50%;
+            margin-left: -245px;
+            margin-top: -35px;
+        }
+        .content{
+            width: 1000px;
+            height: 1200px;
+            margin: 0 auto;
+            border-top: 1px dashed yellow;
+            border-left: 1px dashed yellow;
+            position: relative;
+        }
+        .md{
+            position: absolute;
+            top: -30px;
+            left: -10px;
+        }
+        .dd{
+            position: absolute;
+            top: 20px;
+            left: -6px;
+        }
+        .more-border{
+            width: 80px;
+            height: 45px;
+            border-radius: 30px;
+            border: 1px dashed yellow;
+            position: absolute;
+            right: 0;
+            top: -25px;
+        }
+        .more{
+            width: 70px;
+            height: 35px;
+            background: rgba(251,225,2,0.5);
+            border-radius: 25px;
+            margin-left: 5px;
+            margin-top: 5px;
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+        }
+        .more:hover{
+            background: rgb(251,225,2);
+            color: #000;
+            cursor: pointer;
+        }
+        .content-left{
+            width: 370px;
+            height: 430px;
+            background-color: #f5f5f5;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            left: 30px;
+            top:50px;
+        }
+        .left-top{
+            width: 100%;
+            height: 60px;
+            background-color: #fbe102;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: #000;
+            font-size: 23px;
+            text-align: center;
+            line-height: 60px;
+            font-weight: bold;
+        }
+        .left-body{
+            width:310px;
+            height: 320px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            margin-left: 30px;
+            margin-top: 20px;
+            float: left;
+        }
+        .left-body p {
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            border-bottom: 1px solid #ccc;
+        }
+        .a1{
+            display: block;
+            width: 155px;
+            float: left;
+            text-align: center;
+            border-right: 1px solid #ccc;
+        }
+        .a1:hover{
+            cursor: pointer;
+            color: #e4393c;
+        }
+        .a2{
+            display: block;
+            width: 80px;
+            float: left;
+            text-align: center;
+            border-right: 1px solid #ccc;
+        }
+        .a2:hover{
+            cursor: pointer;
+            color: #e4393c;
+        }
+        .span1{
+            width: 60px;
+            height: 45px;
+            float: left;
+            background: url("img/r2.png") no-repeat;
+            background-position: 12px 4px;
+            cursor: pointer;
+        }
+        .content-right{
+            width: 555px;
+            height: 430px;
+            background-color: #f5f5f5;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            left: 420px;
+            top:50px;
+        }
+        .right-bf{
+            width: 315px;
+            height: 245px;
+            background-color: #000;
+            margin-left: 20px;
+            margin-top: 20px;
+            float: left;
+            overflow: hidden;
+        }
+        .bf-txt{
+            width: 160px;
+            height: 70px;
+            margin-left: 70px;
+            margin-top: 85px;
+        }
+        .bf-txt span{
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: url("img/p-2.png")no-repeat center;
+            float: left;
+            cursor: pointer;
+        }
+        .a3{
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 23px;
+            font-weight: bold;
+            color: #fff;
+            float: left;
+            margin-left: 10px;
+        }
+        .a3:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .a4{
+            color: #fff;
+            text-decoration: underline;
+            float: left;
+            margin-top: 5px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+        .right-txt{
+            width: 190px;
+            height: 240px;
+            line-height: 28px;
+            float: left;
+            margin-top: 25px;
+            margin-left: 20px;
+        }
+        .a5{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .a6{
+            font-size: 15px;
+            color: #555;
+        }
+        .a6 span{
+            color: #e4393c;
+            font-size: 23px;
+        }
+        .a7{
+            color: #666;
+            font-size: 15px;
+        }
+        .a8{
+            font-size: 20px;
+            color: #e4393c;
+        }
+        .right-chakan{
+            width: 190px;
+            height: 50px;
+            text-align: center;
+            background-color: #e4393c;
+            float: left;
+            margin-top: 25px;
+            margin-left: 180px;
+            border: none;
+            outline: 0 none;
+            position: relative;
+            cursor: pointer;
+        }
+        .right-chakan p{
+            width: 75px;
+            height: 30px;
+            text-align: right;
+            font-size: 20px;
+            color: #fff;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB";
+            position: absolute;
+            top:10px;
+            left: 50%;
+            margin-left: -45px;
+        }
+        .chakan{
+            display: block;
+            width: 30px;
+            height: 15px;
+            background: url("img/p-3.png")no-repeat 0 -5px;
+            float: left;
+            margin-top: 7px;
+        }
+        .md2{
+            position: absolute;
+            top: 520px;
+            left: -10px;
+        }
+        .dd2{
+            position: absolute;
+            top: 570px;
+            left: -6px;
+        }
+        .content2-left{
+            width: 370px;
+            height: 430px;
+            background-color: #f5f5f5;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            left: 30px;
+            top:600px;
+        }
+        .left2-top{
+            width: 100%;
+            height: 60px;
+            background-color: #fbe102;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: relative;
+        }
+        #left{
+            width: 150px;
+            height: 65px;
+            background-color: #ffba00;
+            color: #a9352d;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB";
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+            font-weight: bold;
+            border: none;
+            outline: 0 none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            top:-5px;
+            left: 0;
+
+        }
+        #right{
+            width: 220px;
+            height: 60px;
+            color: #000;
+            background-color: #fbe102;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB";
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+            font-weight: bold;
+            border: none;
+            outline: 0 none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            left: 150px;
+        }
+        #left2-body1{
+            width: 330px;
+            height: 300px;
+            margin: 20px;
+        }
+        .ul1{
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+        .li1{
+            height: 30px;
+            list-style: none;
+            float: left;
+            font-size: 15px;
+            margin-right: 7px;
+            position: relative;
+        }
+        .li1 a{
+            position: absolute;
+            top: 20px;
+            left:18px;
+            display: none;
+        }
+        .active{
+            border-bottom: 1px solid #e4393c;
+        }
+        .ul2{
+            width: 100%;
+            height: 150px;
+            line-height: 25px;
+            font-size: 13px;
+            color: #666;
+            float: left;
+            margin-top: 10px;
+            border-bottom: 1px dotted #ccc;
+            list-style: none;
+            position: relative;
+            display: none;
+        }
+        .ul2 li:hover{
+            cursor: pointer;
+            color: #e4393c;
+        }
+        .a10{
+            font-size: 20px;
+            color: #000;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .ul3 li span{
+            display: block;
+            width: 30px;
+            height: 20px;
+            background: url("img/l.png")no-repeat center;
+            float: left;
+            margin-left: -5px;
+        }
+        .ul3{
+            width: 100%;
+            height: 130px;
+            line-height: 25px;
+            font-size: 13px;
+            color: #666;
+            float: left;
+            list-style: none;
+            text-align: left;
+            border-bottom: 1px dotted #ccc;
+            position: relative;
+        }
+        .ul3 li:hover{
+            cursor: pointer;
+            color:#e4393c;
+        }
+        .content2-right{
+            width: 550px;
+            height: 430px;
+            background-color: #f5f5f5;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: absolute;
+            left: 420px;
+            top:600px;
+        }
+        .footer{
+            width: 1280px;
+            height:100px;
+            margin: 0 auto;
+        }
+        .right2-txt{
+            width: 510px;
+            height: 320px;
+            line-height: 28px;
+            float: left;
+            margin-top: 25px;
+            margin-left: 20px;
+        }
+        .right2-txt1{
+            width: 100%;
+            height: 180px;
+            position: relative;
+            border-bottom: 1px dotted #ccc;
+        }
+        .right2-txt img{
+            float: left;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        .right2-txt p{
+            width: 164px;
+            height: 20px;
+            line-height: 20px;
+            float: left;
+            color: #666;
+            background-color: #ccc;
+            font-size: 13px;
+            margin-right: 8px;
+        }
+        .right2-txt p a{
+            float: right;
+        }
+        .right2-txt p span{
+            display: block;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: url("img/p-1.png") no-repeat -5px -4px;
+        }
+        .txt1-ul{
+            width: 100%;
+            height: 140px;
+            color: #666;
+            font-size: 13px;
+            position: relative;
+            border-bottom: 1px dotted #ccc;
+        }
+        .txt1-ul li:hover{
+            color: #e4393c;
+            cursor: pointer;
+        }
+        .txt1-ul button{
+            width: 150px;
+            height: 40px;
+            border: none;
+            outline: 0 none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn1{
+            position: absolute;
+            top:20px;
+            right: 50px;
+            background-color: #e4393c;
+        }
+        .btn2{
+            position: absolute;
+            top:65px;
+            right: 50px;
+            background-color: #0A7EC3;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+
+            //耳机切换
+            $(".span1").mouseenter(function () {
+                $(".span1").css({"background":"url('img/r2.png') no-repeat","background-position":"12px 4px"});
+                $(this).css({"background":"url('img/enhe.png') no-repeat","background-position":"20px 4px"});
+            })
+
+            //标题切换
+            $("#left").click(function () {
+                $(this).css({"top":"-5px","height":"65px","background-color":"#ffba00","color":"#a9352d"});
+                $("#right").css({"top":"0","height":"60px","background-color":"#fbe102","color":"#000"});
+                $("#left2-body1").css("display","block");
+                $("#left2-body2").css("display","none");
+            });
+            $("#right").click(function () {
+                $(this).css({"top":"-5px","height":"65px","background-color":"#ffba00","color":"#a9352d"});
+                $("#left").css({"top":"0","height":"60px","background-color":"#fbe102","color":"#000"});
+                $("#left2-body1").css("display","none");
+                $("#left2-body2").css("display","block");
+            });
+
+            //下部切换
+            $(".ul1").find(".li1").mouseenter(function () {
+                //下划线
+                $(".li1").attr("class","li1");
+                $(this).attr("class","li1 active");
+                //选项卡
+                $(".ul2").css("display","none");
+                $(".ul2").eq($(this).index()).css("display","block");
+                //小三角
+                $(".li1").find("a").css("display","none");
+                $(".li1").find("a").eq($(this).index()).css("display","block");
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div class="header">
+    <img src="img/head_01.png" style="width: 100%">
+    <div class="dt">
+        <img src="img/dt1.png">
+    </div>
+</div>
+<div class="content">
+    <div class="md">
+        <img src="img/md.png">
+    </div>
+    <div class="dd">
+        <img src="img/dd.png">
+    </div>
+    <div class="more-border"><div class="more">更多</div></div>
+    <div class="content-left">
+        <div class="left-top">1对1专岗训练系列</div>
+        <div class="left-body">
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+            <p><a class="a1">铁路公安系统</a><a class="a2">53课时</a><span class="span1"></span></p>
+        </div>
+    </div>
+    <div class="content-right">
+        <div class="left-top">系统特训系列</div>
+        <div class="right-bf">
+            <div class="bf-txt">
+                <span></span>
+                <a class="a3">免费试学</a>
+                <a class="a4">更多试听</a>
+            </div>
+        </div>
+        <div class="right-txt">
+            <a class="a5">中期进阶视频优惠套<br>餐·名师组合型</a><br>
+            <a class="a6">课时：39课时</a><br>
+            <a class="a6">授课老师：李曼倾、郝爽、刘须宽</a><br>
+            <a class="a6">评价：<span>★★★★★</span></a><br>
+            <a class="a7">原价：￥4180</a><br>
+            <a class="a8">现价：￥2380</a>
+        </div>
+        <button class="right-chakan">
+            <p><span class="chakan"></span>查看</p>
+        </button>
+    </div>
+    <div class="md2">
+        <img src="img/ms.png">
+    </div>
+    <div class="dd2">
+        <img src="img/dd.png">
+    </div>
+    <div class="content2-left">
+        <div class="left2-top">
+            <button id="left">结构化面试</button>
+            <button id="right">无领导小组讨论</button>
+        </div>
+        <div id="left2-body1">
+            <ul class="ul1">
+                <li class="li1 active">综合分析<br><a style="display: block"><img src="img/j1.png"></a></li>
+                <li class="li1">自我认知<br><a><img src="img/j1.png"></a></li>
+                <li class="li1">应急应变<br><a><img src="img/j1.png"></a></li>
+                <li class="li1">组织管理<br><a><img src="img/j1.png"></a></li>
+                <li class="li1" style="margin: 0">人际沟通<br><a><img src="img/j1.png"></a></li>
+            </ul>
+            <ul class="ul2" style="display: block">
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <a class="a10">...</a>
+            </ul>
+            <ul class="ul2">
+                <li>· 2016年中央机关及其网上</li>
+                <li>· 2016年中央员招考网上</li>
+                <li>· 2招考网上</li>
+                <li>· 2016年中央机关及员招考网上</li>
+                <li>· 2016年中央机考网上</li>
+            </ul>
+            <ul class="ul2">
+                <li>· 2016年中央机关及其网上</li>
+                <li>· 2016年中央员招考网上</li>
+                <li>· 2上</li>
+                <li>· 2016年中网上</li>
+            </ul>
+            <ul class="ul2">
+                <li>· 2招考网上</li>
+                <li>· 2016年中央机关及员招考网上</li>
+                <li>· 2016年中央机考网上</li>
+            </ul>
+            <ul class="ul2">
+                <li>· 2</li>
+                <li>· 2016年中考网上</li>
+                <li>· 2招考网上</li>
+                <li>· 2016年中务员招考网上</li>
+                <li>· 20机考网上</li>
+            </ul>
+            <ul class="ul3">
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <a class="a10">...</a>
+            </ul>
+        </div>
+        <div id="left2-body2" style="display: none">
+            <ul class="ul3">
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+                <li><span></span>2016年中央机关及其直属机构公务员招考网上</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content2-right">
+        <div class="left-top">国考面试热点解读</div>
+        <div class="right2-txt">
+            <div class="right2-txt1">
+                <img src="img/mt.jpg">
+                <img src="img/mt.jpg">
+                <img src="img/mt.jpg" style="margin: 0">
+                <p>主讲：李新华<a><span></span>400</a></p>
+                <p>主讲：李新华<a><span></span>400</a></p>
+                <p style="margin: 0">主讲：李新华<a><span></span>400</a></p>
+                <a class="a10">...</a>
+            </div>
+            <ul class="txt1-ul">
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <li>· 2016年中央机关及其直属机构公务员招考网上</li>
+                <a class="a10">...</a>
+                <button class="btn1">昨日国内外大事件</button>
+                <button class="btn2">一周热点精选</button>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <img src="img/head_03.png" style="width: 100%">
+</div>
+</body>
+</html>

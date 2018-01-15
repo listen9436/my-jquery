@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            display: none;
+        }
+        .active{
+            background-color: #0A7EC3;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+//        window.onload = function () {
+//            var oDiv = document.getElementById('div1');
+//            var arrBtn = oDiv.getElementsByTagName('button');
+//            var arrTxt = oDiv.getElementsByTagName('div');
+//
+//            for( var i=0;i<arrBtn.length;i++){
+//                arrBtn[i].index = i;
+//
+//                arrBtn[i].onclick = function () {
+//
+//                    for (var j=0;j<arrTxt.length;j++){
+//                        arrBtn[j].className = "";
+//                        arrTxt[j].style.display = "none";
+//                    }
+//                    this.className = "active";
+//                    arrTxt[this.index].style.display = "block";
+//                }
+//            }
+//        }
+        
+        
+        $(function () {
+            $("#div1").find("button").click(function () {
+
+                $("button").attr("class","");
+                $("#div1").find("div").css("display","none");
+                $(this).attr("class","active");
+                $("#div1").find("div").eq($(this).index()).css("display","block");
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="div1">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div style="display: block">asdserhgerheaasdd</div>
+    <div>asdsmjhymhfmdsasdsadsadd</div>
+    <div>adsadsadfdbdsvads<br>sadsadsadsadsadsadsa</div>
+</div>
+</body>
+</html>

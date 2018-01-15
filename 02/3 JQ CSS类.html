@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+//        addClass() - 向被选元素添加一个或多个类
+//        removeClass() - 从被选元素删除一个或多个类
+//        toggleClass() - 对被选元素进行添加/删除类的切换操作
+//        css() - 设置或返回样式属性
+
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("h1,h2,p").addClass("active bold");
+    });
+
+    $("#btn2").click(function () {
+        $("h1,h2,p").removeClass("active bold")
+    })
+
+    //用CSS() 方法给元素设置样式
+    $("#btn3").click(function(){
+        $("p").css({"background-color":"yellow","font-size":"200%"});
+        $("h1").css("display","none");
+    });
+});
+    </script>
+    <style>
+        .active{
+            color: blue;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>标题 1</h1>
+<h2>标题 2</h2>
+<p>这是一个段落。</p>
+<p>这是另外一个段落。</p>
+<br>
+<button id="btn1">为元素添加 class</button>
+<button id="btn2">从元素中移除 class</button>
+<button id="btn3">给P设样式，隐藏h1</button>
+</body>
+</html>

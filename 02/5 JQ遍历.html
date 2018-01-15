@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ancestors *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        //找祖先
+// parent() 方法 返回被选元素的直接父元素。（亲生父亲）
+// parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素。(所有祖先)
+// parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。(他和选定元素之间的祖先)
+
+        //找后代
+// children() 方法 返回被选元素的所有直接子元素。
+// find() 方法 返回被选元素的后代元素，一路向下直到最后一个后代。
+
+        //找同胞
+// siblings() 方法返回被选元素的所有同胞元素。
+// next() 方法返回被选元素的下一个同胞元素。(该方法只返回一个元素。)
+// nextAll() 方法返回被选元素的所有跟随的同胞元素。（他后面的所有同胞）
+// nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素。
+
+// prev(), prevAll() 以及 prevUntil()
+// 方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素
+
+
+$(document).ready(function(){
+    $("span").parentsUntil("div").css({"color":"red","border":"2px solid red"});
+    $("div").find("span").css({"color":"blue"});//找div中的所有span
+});
+    </script>
+</head>
+<body class="ancestors"> body (曾曾祖父元素)
+<div style="width:500px;">div (曾祖父元素)
+    <ul>ul (祖父元素)
+        <li>li (父元素)
+            <span>span</span>
+            <span>span</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
