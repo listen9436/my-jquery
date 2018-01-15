@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            width: 400px;
+            margin: 20px auto;
+        }
+        li{
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+        }
+        .date{
+            text-align: right;
+        }
+    </style>
+    <script src="ajax2.js"></script>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                ajax("get","getNews.php","", function (str) {
+                    var str1 = eval(str);
+                    console.log(str1);
+                    var oUl = document.getElementById('ul1');
+                    for (var i=0;i<str1.length;i++){
+                        var oLi = document.createElement('li');
+                        oLi.innerHTML  ="<p class='title'>"+str1[i].title+"</p>" +
+                                        "<p class='date'>"+str1[i].date+"</p>"
+
+                    oUl.appendChild(oLi);
+                    }
+                })
+            }
+        }
+
+    </script>
+</head>
+<body>
+<input type="button" value="获取" id="btn">
+<h3>需要服务器环境，否则报错</h3>
+<ul id="ul1"></ul>
+</body>
+</html>

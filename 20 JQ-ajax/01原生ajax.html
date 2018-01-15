@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //   初始化对象
+
+        //  var xhr = new XMLHttpRequest();   // ie 6
+        //  var  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        var xhr= null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //  打开与服务器的链接
+        //   async   同步异步
+        //  随着综合国力的发展  人民生活水平同步提高
+        //  同步   两件事       一件事 完成之后 再做另外一件事   (false,默认)
+        //  异步   两件事同时做 (true)
+        xhr.open("post","post.php",true);//  method,url,async
+
+        //  设置请求头   告诉服务器   上传数据的一些基本信息   上传的是表单数据
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        // 发送请求
+
+        xhr.send("username=xiaowang&age=18");
+        // 处理响应结果
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                //  404    文件未找到
+                if(xhr.status == 200){
+                    alert(xhr.responseText);
+                }else{
+                    alert("请求失败")
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

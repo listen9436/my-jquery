@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{	
+				color: #000;
+				width: 200px;
+				height: 50px;
+				margin: 50px auto;
+				line-height: 50px;
+				text-align: center;
+			}
+			.huierzi{
+				border: 1px solid #009DDA;
+				cursor: pointer;
+				
+			}
+			.huierzi:hover{
+				background: #009DDA;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+<!--		<input type="text" id="enter" />-->
+		<div class="box"></div>
+		<script src="jquery-1.8.3.min.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"http://test.kangyemc.com/yayi-user/app/region/selectCityWithPy.do",
+					async:true,
+					dataType:"json",
+					data:[],
+					success:function(data){
+						console.log(data);
+						for(var x in data){
+							var a = data[x];
+							for(i in a){
+								console.log(a[i].city);
+								$(".box").append("<p class='huierzi'>"+ a[i].city +"</p>");
+							}
+						}						
+					},
+					error:function(){
+						console.log(2);
+					}
+				});
+				$(".box").on("click",".huierzi",function(){
+					$(this).css({color:"red"})
+				})
+			})
+		</script>
+	</body>
+</html>

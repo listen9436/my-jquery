@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.nav1{
+				display: none;
+			}
+		</style>
+		<script src="jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					url: "http://api.map.baidu.com/telematics/v3/weather?location=北京&output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724",
+					type: "get",
+					dataType: "jsonp"
+
+				}).done(function(data) {
+					var x1 = data.results[0].weather_data;
+					for (var i=0;i<x1.length;i++) {
+						var a=$(".nav1").html()
+						.replace("p1",x1[i].dayPictureUrl)
+						.replace("p2",x1[i].nightPictureUrl)
+						.replace("date",x1[i].date)
+						.replace("temperature",x1[i].temperature)
+						.replace("weatherr",x1[i].weather)
+						.replace("wind",x1[i].wind)
+						$("body").append(a)
+					}
+					console.log(data);
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="nav1">
+			<img src="p1">
+			<img src="p2">
+			<p>date</p>
+			<p>temperature</p>
+			<p>weatherr</p>
+			<p>wind</p>
+		</div>
+	</body>
+
+</html>

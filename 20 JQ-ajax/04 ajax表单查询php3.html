@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            color: blue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById("btn1");
+            var oDiv = document.getElementById("box");
+            oBtn.onclick = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "test.php?number=" + document.getElementById("in1").value, true);
+                xhr.send(null);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            oDiv.innerHTML = xhr.responseText;
+                        } else {
+                            oDiv.innerHTML = xhr.status;
+                        }
+                    }
+                }
+            };
+
+            var oBtn2 = document.getElementById("btn2");
+            oBtn2.onclick = function () {
+                var name = document.getElementById("setName").value;
+                var number = document.getElementById("setNumber").value;
+                var sex = document.getElementById("setSex").value;
+                var job = document.getElementById("setJob").value;
+                var xml = new XMLHttpRequest();
+                xml.open("POST", "test.php");
+                xml.setRequestHeader("Content-type", "application/X-www-form-urlencoded");//与GET方式区别，需要一个请求头。
+                var data = "name=" + name + "&number=" + number + "&sex=" + sex + "&job=" + job;
+                xml.send(data);
+                xml.onreadystatechange = function () {
+                    if (xml.readyState == 4) {
+                        if (xml.status == 200) {
+                            oDiv.innerHTML = xml.responseText;
+                        }else {
+                            oDiv.innerHTML = xml.status;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<form>
+    <h1>员工信息</h1>
+    <label for="in1">员工编号：</label>
+    <input id="in1" type="text"/>
+    <input id="btn1" type="button" value="查询"/>
+    <h1>员工新建</h1>
+    <label for="setName">请输入员工姓名：</label>
+    <input id="setName" type="text"/><br><br>
+    <label for="setNumber">请输入员工编号：</label>
+    <input id="setNumber" type="text"/><br><br>
+    <label for="setSex">请输入员工性别：</label>
+    <select id="setSex">
+        <option>男</option>
+        <option>女</option>
+    </select>
+    <br><br>
+    <label for="setJob">请输入员工职位：</label>
+    <input id="setJob" type="text"><br><br>
+    <input id="btn2" type="button" value="保存">
+</form>
+<div id="box"></div>
+</body>
+</html>

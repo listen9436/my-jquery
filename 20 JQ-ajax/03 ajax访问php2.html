@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 500px;
+            display: inline-block;
+
+        }
+
+        img {
+            height: 300px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+    </style>
+    <script src="ajax2.js"></script>
+    <script>
+
+        window.onload = function () {
+            var body = document.body;
+            var oInput = document.getElementsByTagName("input")[0];
+            var page = 0;
+            oInput.onclick = function () {
+                ajax("get", "getImages.php", "page=" + page, function (str) {
+                    // 1 解析
+                    var arr = eval("(" + str + ")")
+                    console.log(arr);
+                    if (arr.length > 1) {//没有图片时，arr.length = 0;(只要有图，就肯定>1);
+
+                        for (var i = 0; i < arr.length; i++) {
+                            var oDiv = document.createElement("div");
+                            oDiv.innerHTML = '<img src="' + arr[i].src + '" alt=""> <p>' + arr[i].name + '</p>'
+
+                            body.insertBefore(oDiv, oInput)
+                            //在input按钮前 插入 oDiv
+                        }
+                    } else {
+                        oInput.value = "没有更多图片"
+                    }
+                    page++;
+                })
+            }
+        }
+
+    </script>
+</head>
+<body>
+<h3>需要服务器环境，否则报错</h3>
+<input type="button" value="加载更多">
+
+</body>
+</html>
