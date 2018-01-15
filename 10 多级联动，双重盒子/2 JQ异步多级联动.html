@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .change {
+            width: 800px;
+            height: 100px;
+            margin: 100px auto;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        var datas = {
+            province: [{"id": 1001, "name": "湖南省"}, {"id": 1002, "name": "湖北省"}],
+            city: {
+                "1001": "100101#长沙市,100102#郴州市,100103#株洲市",
+                "1002": "100201#武汉,100202#十堰,100203#宜昌,100204#襄阳"
+            },
+            area: {
+                "100101": "10010101#雨花区,10010102#芙蓉区",
+                "100102": "10010201#啦啦区,10010202#哈哈区",
+                "100103": "10010301#杨建区,10010302#建阳区,10010303#阿萨德区",
+                "100201": "10020101#武昌,10020102#汉口,10020103#青山,10020104#汉阳",
+                "100202": "10020201#竹山县,10020202#竹溪县",
+                "100203": "10020301#都是区,10030302#速度县",
+                "100204": "10020401#萨达区,10020402#撒旦县,10020403#请问区"
+            }
+        };
+
+        $(function () {
+            init_province();
+        })
+
+        //初始化省份
+        function init_province() {
+            $("#province").append("<option>--请选择省份--</option>");
+            var provinceArr = datas.province;
+            for (var i = 0; i < provinceArr.length; i++) {
+                $("#province").append("<option value='" + provinceArr[i].id + "'>" + provinceArr[i].name + "</option>")
+            }
+        }
+        //获取某个省对应的城市
+        function city_change(obj) {
+            //获取选中省份
+            var value = obj.value;
+            //根据省份的ID找到对应的城市的数据
+            var cityDates = datas["city"][value];
+            //解析城市的数据
+            var citys = cityDates.split(",");
+            //添加前清空数据
+            $("#city").empty();
+            //添加默认选项
+            $("#city").append("<option>--请选择市--</option>");
+            //遍历数组
+            for (var i = 0; i < citys.length; i++) {
+                var v = citys[i].split("#");
+                var cityId = v[0];
+                var cityName = v[1];
+                $("#city").append("<option value='" + cityId + "'>" + cityName + "</option>");
+            }
+        }
+        //根据选择的市对应区、县
+        function area_change(obj){
+            var value = obj.value;
+            var areaDates = datas["area"][value];
+            var areas = areaDates.split(",");
+            //添加前清空数据
+            $("#area").empty();
+            //添加默认选项
+            $("#area").append("<option>--请选择区/县--</option>");
+            //遍历数组
+            for (var i = 0; i < areas.length; i++) {
+                var v = areas[i].split("#");
+                var areaId = v[0];
+                var areaName = v[1];
+                $("#area").append("<option value='" + areaId + "'>" + areaName + "</option>");
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>省、市、区多级联动</h1>
+<div class="change">
+    <form>
+        省:
+        <select id="province" onchange="city_change(this)"></select>
+        市：
+        <select id="city" onchange="area_change(this)"></select>
+        区：
+        <select id="area"></select>
+    </form>
+</div>
+</body>
+</html>
