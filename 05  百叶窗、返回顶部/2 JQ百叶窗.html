@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 640px;
+            height: 320px;
+            border: 1px solid #000;
+            position: relative;
+            margin: 80px auto;
+            overflow: hidden;
+        }
+        .box img{
+            width: 480px;
+            height: 320px;
+            position: absolute;
+            top:0;
+            left: 0;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="move.js"></script>
+    <script>
+
+        $(function () {
+//           console.log($(".box img2").size()); //相当于  alert(xx.length);
+//           JQ中 用 size() 代替 lenght()对象;
+//           想要 Z-index 有作用，要有层级的元素定位
+            var n = $(".box img").size();
+            for(var i=0;i<n;i++){
+                $(".box img").eq(i).css({left:(i*80)+"px",zIndex:i});
+            };
+
+            $(".box img").hover(function () {
+               var p = Number(this.alt);
+                //他左边的往左收
+                for(var j=0;j<p;j++){
+                    $(".box img").eq(j).stop().animate({left:j*30});
+                }
+                //他右边的往右挪
+                for(;p<n;p++){
+                    $(".box img").eq(p).stop().animate({left:p*30+400});
+                }
+                //每个图片变回原来的位置
+            }, function () {
+                for(var k=0;k<n;k++){
+                    $(".box img").eq(k).stop().animate({left:k*80});
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <img src="img/pic1.jpg" alt="1">
+    <img src="img/pic2.jpg" alt="2">
+    <img src="img/pic3.jpg" alt="3">
+    <img src="img/pic4.jpg" alt="4">
+    <img src="img/pic5.jpg" alt="5">
+    <img src="img/pic6.jpg" alt="6">
+    <img src="img/pic7.jpg" alt="7">
+    <img src="img/pic8.jpg" alt="8">
+</div>
+</body>
+
+</html>
