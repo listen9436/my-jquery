@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #login{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: absolute;
+        }
+        #close{
+            position: absolute;
+            right: 0;
+            top:0;
+            cursor: pointer;
+        }
+    </style>
+
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                //创建窗口
+                var oLogin = $('<div id="login"><p>用户名:<input type="text"></p>' +
+                        '<p>密码:<input type="text"></p><div id="close">&times;</div>这是一个弹窗!!!!</div>');
+                //把它加到页面中
+                $("body").append( oLogin);
+                oLogin.slideDown("slow"); //不管用
+                //让它居中显示
+                oLogin.css("left",($(window).width() - oLogin.outerWidth())/2);
+                oLogin.css("top",($(window).height() - oLogin.outerHeight())/2);//outerHeight是把边框也算进去
+                //点小叉时关闭
+                $("#close").click(function () {
+//                    oLogin.remove();  //直接移出不好看
+                    oLogin.slideUp("slow");//(只能一次性)
+                });
+
+                //如果出现滚动条，，让它动态居中显示
+                $(window).on("resize scroll", function () {
+
+                    oLogin.css("left",($(window).width() - oLogin.outerWidth())/2);
+                    oLogin.css("top",($(window).height() - oLogin.outerHeight())/2 + $(window).scrollTop());
+                });
+            })
+        })
+    </script>
+</head>
+<body style="height: 2000px">
+
+<input type="button" value="点击" id="btn">
+<!--<div id="login">-->
+    <!--<p>用户名:<input type="text"></p>-->
+    <!--<p>密码:<input type="text"></p>-->
+    <!--<div id="close">&times;</div>-->
+<!--</div>-->
+</body>
+</html>

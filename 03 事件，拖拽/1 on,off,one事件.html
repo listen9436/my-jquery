@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 2000px;
+            background-color: red;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(function () {
+            // json写法
+//            $("#div1").on({
+//                "click": function () {
+//                    alert("123");
+//                },
+//                "mouseenter": function () {
+//                    alert("456");
+//                }
+//            });
+
+            //执行的结果相同时可以连着写
+            $("#div1").on("click mouseenter", function () {
+                alert("123");
+                $("#div1").off("mouseenter");
+            });
+
+            //若把 on()  改为  one() 那么事件只执行一次。
+
+            //获取屏幕滚动条
+            $(document).click(function () {
+                alert("滚动条高度为："+$(window).scrollTop());
+            });
+        })
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
