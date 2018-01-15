@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0 ;
+            padding: 0;
+        }
+        .box1 img{
+            width: 300px;
+            margin-right:20px;
+            float: left;
+        }
+        .box2{
+            position: absolute;
+        }
+        .box2 img{
+            display: none;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+            $(".box1").find("img").mouseover(function () {
+                $(".box2").find("img").eq($(this).index()).fadeIn(0);
+            }).mouseout(function () {
+                $(".box2").find("img").eq($(this).index()).fadeOut(0);
+            }).mousemove(function (ev) {
+                var x=10;
+                var y=10;
+                $(".box2").css("left",ev.pageX + x);
+                $(".box2").css("top",ev.pageY + y);
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<div class="box1">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+</div>
+<div class="box2">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+</div>
+</body>
+</html>
