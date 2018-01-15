@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-3.1.0.min.js">
+    </script>
+    <script>
+
+//        $(selector).hide(speed,callback);
+//        $(selector).show(speed,callback);
+
+//          speed 可取："slow"、"fast" 或毫秒。
+//          callback 参数是隐藏或显示完成后所执行的函数名称
+
+
+//        toggle() 方法来切换 hide() 和 show() 方法。一键搞定
+//        显示被隐藏的元素，并隐藏已显示的元素：
+
+        $(document).ready(function(){
+            $("#hide").click(function(){
+                $("p").hide("slow");
+            });
+            $("#show").click(function(){
+                $("p").show(1000);
+            });
+            $("#btn").click(function () {
+                $("p").toggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<p>如果你点击“隐藏” 按钮，我将会消失。</p>
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+<button id="btn">隐藏/显示</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.0.min.js"></script>
+    <style>
+        #panel,#flip
+        {
+            padding:5px;
+            text-align:center;
+            background-color:#e5eecc;
+            border:solid 1px #c3c3c3;
+        }
+        #panel
+        {
+            padding:50px;
+            display:none;
+        }
+    </style>
+    <script>
+//        slideDown()
+//        slideUp()
+//        slideToggle()
+
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideToggle("slow");
+            });
+        })
+
+    </script>
+</head>
+<body>
+<div id="flip">点我，显示或隐藏面板。</div>
+<div id="panel">Hello world!</div>
+</body>
+</html>

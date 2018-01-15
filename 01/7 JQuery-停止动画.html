@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        #panel,#flip
+        {
+            padding:5px;
+            text-align:center;
+            background-color:#e5eecc;
+            border:solid 1px #c3c3c3;
+        }
+        #panel
+        {
+            padding:50px;
+            display:none;
+        }
+    </style>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script>
+
+//     jQuery stop() 方法用于停止动画或效果，在它们完成之前。
+//     stop() 方法适用于所有 jQuery 效果函数，包括滑动、淡入淡出和自定义动画。
+
+//            $(selector).stop(stopAll,goToEnd); //两可选参数
+//    stopAll 是否应该清除动画队列。默认是 false，即仅停止当前，后面继续。
+//    goToEnd 立即完成当前动画。默认是 (不完成false)。
+//    默认地，stop() 会清除在被选元素上指定的当前动画。
+
+        $(document).ready(function(){
+            $("#flip").click(function(){
+                $("#panel").slideToggle(3000);
+            });
+            $("#stop").click(function(){
+                $("#panel").stop(false,true);
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="stop">停止滑动</button>
+<div id="flip">点我向下滑动面板</div>
+<div id="panel">Hello world!</div>
+</body>
+</html>
