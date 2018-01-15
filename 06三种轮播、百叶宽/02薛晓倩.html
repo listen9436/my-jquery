@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            widtH:1204px;
+            height:260px;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        ul{
+            width: 1300px;
+        }
+        li{
+            list-style: none;
+            float: left;
+            width: 172px;
+            height: 260px;
+            cursor: pointer;
+            position: relative;
+        }
+        li:hover .midden{
+            display: none;
+        }
+        .midden{
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background:rgba(0,0,0,0.3);
+        }
+        h4{
+            color: #fff;
+            width: 30px;
+            margin: 0 auto;
+            display: block;
+            font: 30px/30px Microsoft Yahei;
+            position: relative;
+            padding: 30px 0 0 0;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(function(){
+            var arrli = $(".box").find("li").size();
+            for(var i = 0;i<arrli;i++){
+                $(".box").find("li").eq(i).css({background:"url(img/0"+(i+1)+".jpg"});
+            }
+            $("li").hover(function(){
+                $(this).stop().animate({width:400},400);
+                $(this).siblings().stop().animate({width:134});
+            }, function () {
+                $("li").stop().animate({width:172});
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li class="li">
+            <div class="midden">
+                <h4>园林酒店</h4>
+            </div>
+        </li>
+        <li class="li1">
+            <div class="midden">
+                <h4>情侣酒店</h4>
+            </div>
+        </li>
+        <li class="li2">
+            <div class="midden">
+                <h4>设计师酒店</h4>
+            </div>
+        </li>
+        <li class="li3">
+            <div class="midden">
+                <h4>青年旅社</h4>
+            </div>
+        </li>
+        <li class="li4">
+            <div class="midden">
+                <h4>特色客栈</h4>
+            </div>
+        </li>
+        <li class="li5">
+            <div class="midden">
+                <h4>海岛酒店</h4>
+            </div>
+        </li>
+        <li class="li6">
+            <div class="midden">
+                <h4>海外温泉</h4>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

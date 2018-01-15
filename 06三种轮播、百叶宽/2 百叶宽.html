@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 1200px;
+            height: 400px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        ul{
+            width: 1300px;
+            /* (解决BUG)给个大于盒子的ul ，否侧最后一张图片会被挤出去*/
+        }
+        ul li{
+            width: 240px;
+            height: 400px;
+            float: left;
+            list-style: none;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+
+        $(function () {
+            var lis = $(".box ul li").size();
+            for(var i=0;i<lis;i++){
+                $(".box ul li").eq(i).css({background:"url(img/"+(i+1)+".jpg"});
+            }
+            $(".box ul li").hover(function () {
+               $(this).stop().animate({width:800},400);
+               $(this).siblings().stop().animate({width:100});
+            }, function () {
+                $(".box ul li").stop().animate({width:240});
+            });
+        })
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
