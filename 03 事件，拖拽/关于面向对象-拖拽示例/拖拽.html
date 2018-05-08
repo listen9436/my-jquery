@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("div1");
+            oDiv.onmousedown = function (ev) {
+                var oEvent = window.event || ev;
+                var x = oEvent.clientX - oDiv.offsetLeft;
+                var y = oEvent.clientY - oDiv.offsetTop;
+                document.onmousemove = function (ev) {
+                    var oEvent = window.event || ev;
+                    oDiv.style.left = oEvent.clientX - x +"px"
+                    oDiv.style.top = oEvent.clientY -y +"px"
+                }
+                //当鼠标松开时清除跟随事件
+                document.onmouseup = function () {
+                    document.onmousemove = undefined;
+                }
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
