@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;position: absolute;}
+			#div2{width: 100px;height: 100px;background: yellow;position: absolute;
+			left:100px;top:100px;}
+		</style>
+		<script>
+////			不理想的继承(子类会影响父类)
+//			var arr1 = [1,2,3];
+//			var arr2 = arr1;
+//			
+//			arr2.push(4);
+//			alert("arr1:" + arr1);   // 1,2,3,4
+//			alert("arr2:" + arr2);	 // 1,2,3,4
+//			
+////			理想的继承(子类  不会影响父类)
+//			var arr1 = [1,2,3];
+//			var arr2 = [];
+//
+////			相当于把 arr1中的东西复制了一遍。
+//			for(var i in arr1){
+//				arr2[i] = arr1[i];
+//			}
+//			arr2.push(4);
+//			alert("arr1:" + arr1);   // 1,2,3     没有受到影响。
+//			alert("arr2:" + arr2);	 // 1,2,3,4
+			
+			window.onload = function(){
+				new Drag("div1");
+				new LimitDrag("div2");
+			}
+			function Drag(id) {
+				var _this = this;
+				this.x = 0;
+				this.y = 0;
+	            this.oDiv = document.getElementById(id);
+	            this.oDiv.onmousedown = function(ev){
+	            	_this.fnDown(ev);
+	            	return false;
+	            };
+	        }
+			Drag.prototype.fnDown = function (ev){
+				var _this = this;
+	            var oEvent = window.event || ev;
+	            this.x = oEvent.clientX - this.oDiv.offsetLeft;
+	            this.y = oEvent.clientY - this.oDiv.offsetTop;
+	            document.onmousemove = function(ev){
+	            	_this.fnMove(ev);
+	            };
+	            document.onmouseup = function(){
+	            	_this.fnUp();
+	            };
+	        }
+			Drag.prototype.fnMove = function (ev) {
+	            var oEvent = window.event || ev;
+	            this.oDiv.style.left = oEvent.clientX - this.x +"px";
+	            this.oDiv.style.top = oEvent.clientY -this.y +"px";
+	        }
+			Drag.prototype.fnUp = function (){
+	            document.onmousemove = null;
+	            document.onmouseup = null;
+	       	}
+			
+			
+			function LimitDrag(id){
+				Drag.call(this,id);
+			}
+			for(var i in Drag.prototype){
+				LimitDrag.prototype[i] = Drag.prototype[i];
+			}
+			
+			LimitDrag.prototype.fnMove = function(ev){
+				var oEvent = window.event || ev;
+	            var l = oEvent.clientX - this.x;
+	            var t = oEvent.clientY -this.y;
+	            if(l<0){
+	            	l = 0;
+	            }
+	            if(t<0){
+	            	t = 0;
+	            }
+	            if (l > document.documentElement.clientWidth - this.oDiv.offsetWidth) {
+                    l = document.documentElement.clientWidth - this.oDiv.offsetWidth;
+                }
+                if (t > document.documentElement.clientHeight - this.oDiv.offsetHeight) {
+                   	t = document.documentElement.clientHeight - this.oDiv.offsetHeight;
+                }
+                this.oDiv.style.left = l + "px";
+                this.oDiv.style.top = t + "px";
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2">阿萨德</div>
+	</body>
+</html>

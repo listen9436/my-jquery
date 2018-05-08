@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;position: absolute;}
+			#div2{width: 100px;height: 100px;background: yellow;position: absolute;
+			left:100px;top:100px;}
+		</style>
+		<script>
+			window.onload = function(){
+				new Drag("div1");
+				new Drag("div2");
+			}
+			function Drag(id) {
+				var _this = this;
+				this.x = 0;
+				this.y = 0;
+	            this.oDiv = document.getElementById(id);
+	            this.oDiv.onmousedown = function(ev){
+	            	_this.fnDown(ev);
+	            	return false;
+	            };
+	        }
+			Drag.prototype.fnDown = function (ev){
+				var _this = this;
+	            var oEvent = window.event || ev;
+	            this.x = oEvent.clientX - this.oDiv.offsetLeft;
+	            this.y = oEvent.clientY - this.oDiv.offsetTop;
+	            document.onmousemove = function(ev){
+	            	_this.fnMove(ev);
+	            };
+	            document.onmouseup = function(){
+	            	_this.fnUp();
+	            };
+	        }
+			Drag.prototype.fnMove = function (ev) {
+	            var oEvent = window.event || ev;
+	            this.oDiv.style.left = oEvent.clientX - this.x +"px";
+	            this.oDiv.style.top = oEvent.clientY -this.y +"px";
+	        }
+			Drag.prototype.fnUp = function (){
+	            document.onmousemove = null;
+	            document.onmouseup = null;
+	       	}
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2">阿萨德</div>
+	</body>
+</html>
